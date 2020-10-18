@@ -4,7 +4,7 @@ This is an implentation of a symbol table represented on a hash table that uses 
 
 Operations:
 
-* init(self):
+*init(self):
 	description: Creates a new empty Symbol Table
 
 

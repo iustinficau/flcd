@@ -52,7 +52,7 @@ class SymTable:
 	def find(self, key):
 		
 		index = self.hash(key)
-		
+		values = []
 		node = self.buckets[index]
 	
 		while node is not None and node.key != key:
@@ -60,8 +60,12 @@ class SymTable:
 	
 		if node is None:
 			return None
-		else:
-			return index,node
+		
+		while node is not None:
+			values.append(node.value)
+			node = node.next
+            
+		return index,values
 
 	# Remove node stored at key
 	def remove(self, key):

@@ -14,9 +14,10 @@ if __name__ == "__main__":
     
     test_symTable.insert("something",34)
     test_symTable.insert("something", 49)
-    
-    index, node = test_symTable.find("something")
-    print("Position: " + str(index) + " Value: " + str(node.value) + ", " + str(node.next.value))
+    test_symTable.insert("somethingElse", 47)
+    test_symTable.insert("something", 345)
+    index, values = test_symTable.find("something")
+    print("Position: " + str(index) + " Values: " + str(values)  )
     
 
     test_symTable.remove("something")
