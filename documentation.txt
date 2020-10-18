@@ -20,7 +20,7 @@ Operations:
 *find(key):
 	description: Finds a data value based on key
 	pre: key - string
-	post: node - Node, index - integer
+	post: values - list of values, index - integer
 
 
 *remove(key):
