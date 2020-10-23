@@ -1,0 +1,8 @@
+int listOfNumbers = {1,2,3,4,5,6}; 
+int sum = 0; 
+ 
+for x: listOfNumbers 
+  sum += x; 
+ 
+writeToConsole(sum);
+writeToConsole("is the sum of the numbers."); 

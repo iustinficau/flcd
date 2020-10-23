@@ -12,9 +12,22 @@ class SymTable:
     
 	# Initialize hash table
 	def __init__(self):
-		self.capacity = 50
+		self.capacity = 3
 		self.size = 0
 		self.buckets = [None]*self.capacity
+        
+	def __repr__(self):
+		string = ''
+		for i in range(self.capacity):
+		     if (self.buckets[i]!=None):
+			     string += "Position: " + str(i) + "\n"
+			     node = self.buckets[i]
+			     while node != None:
+			         string+= node.key + ", "
+			         node = node.next
+			     string += "\n" 
+		return string
+        
         
 	# Generate a hash for a given key
 	def hash(self, key):
@@ -28,7 +41,10 @@ class SymTable:
 		return hashsum
 
 	# Insert a key,value pair to the hashtable
-	def insert(self, key, value):
+	def insert(self, key):
+        
+		if self.find(key) != None:
+			return None
 		
 		self.size += 1
 
@@ -38,7 +54,7 @@ class SymTable:
 		
 		if node is None:
 			
-			self.buckets[index] = Node(key, value)
+			self.buckets[index] = Node(key)
 			return
 		
 		prev = node
@@ -46,13 +62,13 @@ class SymTable:
 			prev = node
 			node = node.next
 		
-		prev.next = Node(key, value)
-
+		prev.next = Node(key)
+        
+		return index
 	# Find a data value based on key
 	def find(self, key):
 		
 		index = self.hash(key)
-		values = []
 		node = self.buckets[index]
 	
 		while node is not None and node.key != key:
@@ -60,12 +76,7 @@ class SymTable:
 	
 		if node is None:
 			return None
-		
-		while node is not None:
-			values.append(node.value)
-			node = node.next
-            
-		return index,values
+		return index
 
 	# Remove node stored at key
 	def remove(self, key):
