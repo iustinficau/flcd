@@ -1,0 +1,16 @@
+int userInput; 
+read (userInput);  
+ 
+if (userInput < 1)  
+writeToConsole(userInput + " is not prime."); 
+end-if 
+ 
+for i : (2; userInput - 1) 
+if (n % i == 0) 
+{ 
+writeToConsole(userInput)
+writeToConsole(" is not prime."); 
+end; 
+} 
+writeToConsole( userInput )
+writeToConsole (" is prime."); 

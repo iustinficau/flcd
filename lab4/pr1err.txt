@@ -1,0 +1,22 @@
+int a; 
+int b; 
+int #c; 
+
+read(a); 
+read(b); 
+read(c); 
+ 
+if (a >= b and a >= c) 
+writeToConsole(a);
+writeToConsole("is the max");
+end-if 
+
+if (b >= a and b >= c) 
+writeToConsole(b);
+writeToConsole("is the max.);
+
+end-if 
+
+if (c >= a and c >= b) 
+writeToConsole(c);
+end-if 

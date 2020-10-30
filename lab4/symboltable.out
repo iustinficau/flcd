@@ -1,0 +1,5 @@
+The symtable is represented on a hash table using separate chaining as a resolution method
+Position: 1
+a, b, c, 
+Position: 15
+"is the max.", 
