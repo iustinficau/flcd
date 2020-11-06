@@ -1,75 +1,34 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct 16 12:58:51 2020
+Created on Fri Nov  6 12:42:03 2020
 
 @author: ficau
 """
+from finiteAutomata import FiniteAutomata
 
-from symboltable import SymTable
-from scanner import Scanner
-
-def read_tokens():
-        tokens_table = {}
-        tokens = []
-        with open("tokens.in", 'r') as f:
-            for line in f.readlines():
-                row = line.strip().split(',')
-                tokens_table[row[0]] = row[1]
-                tokens.append(row[0])
-        return tokens_table,tokens
-
-def write_pif(data):
-    f = open("pif.out","w")
-    for i in data:
-            f.write(i[0])
-            f.write(" -> ")
-            f.write(str(i[1]))
-            f.write("\n")
-    f.close()
+def print_menu():
     
-def write_sym(data):
-    f = open("symboltable.out","w")
-    f.write("The symtable is represented on a hash table using separate chaining as a resolution method")
-    f.write("\n")
-    f.write(repr(data))
-    f.close()
+    print("1. Show the set of states")
+    print("2. Show the alphabet")
+    print("3. Show the transitions")
+    print("4. Show the final states")
+    print("0. Exit")
+    
     
 if __name__ == "__main__":
+    fa = FiniteAutomata.read_fa("FA.in")
     
-     file = open('pr1.txt','r')
-     symbolTable = SymTable()
-     pif = []
-     tokens_table,tokens = read_tokens()
-     
-     index = 0
-     
-    
-            
-     for line in file:
-         
-         if line[-1] == '\n':
-            line = line[0:-1] 
-         index += 1
-      
-         for token in Scanner.get_tokens(line):
-             if token in tokens:
-                 pif.append([token,-1])
-             elif Scanner.check_identifier(token):
-                 pif.append([token,symbolTable.insert(token)])
-                 
-             elif Scanner.check_constant(token):
-                 pif.append([token,symbolTable.insert(token)])
-             else:
-                 print("Unknown token: "  + token + " at line " + str(index))
-    
-     print(pif)
-     print("\n")
-     print(symbolTable)
-     write_pif(pif)
-     write_sym(symbolTable)
-     
-    
+    while(True):
+        print_menu()
+        i = int(input())
+        if i == 1:   
+            fa.print_states()
+        elif i == 2:
+            fa.print_alphabet()
+        elif i == 3:
+            fa.print_transitions()
+        elif i == 4:
+            fa.print_final_states()
+        elif i == 0:
+            break
         
-
-        
-    
