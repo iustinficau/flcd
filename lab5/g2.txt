@@ -1,0 +1,22 @@
+N = program commpundstmt declist dec stmt stmtlist forstmt RANGE assignstmt ifstmt arraydecl type iostmt condition RELATION term sym expression IDENTIFIER
+E = "+" "-" "*" "/" "%" "{" ":" "}" "end-if" "else" "if" "writeToConsole" "(" ")" "read" 
+S = program 
+P =
+program ::= compundstmt
+declist ::= dec | dec{declist}
+dec ::= type IDENTIFIER ";"
+compoundstmt ::= stmt | "{" stmtlist "} "
+stmt ::= declist |ifstmt | forstmt
+stmtlist ::= stmt | stmt ";" stmtlist
+forstmt ::= "for" IDENTIFIER ":" RANGE compoundstmt
+RANGE ::= " (" NUM "," NUM " ) "
+assignstmt ::= IDENTIFIER "=" expression ";"
+ifstmt ::= "if" condition compoundstmt ["else" compundstmt ] "end-if"
+arraydecl ::= "array" type IDENTIFIER ";"
+type ::= "int" | "bool" | "str"
+iostmt ::= "read" "(" IDENTIFIER ")" | "writeToConsole" "(" IDENTIFIER ")"
+condition ::= expression RELATION expression
+RELATION ::= "<" | "<=" | "==" | "<>" | ">=" | ">"
+term ::= NUM | STR | IDENTIFIER | IDENTIFIER" ["term"]"
+sym ::= "+" | "-" | "*" | "/" | "%"
+expression ::= term | term sym term
