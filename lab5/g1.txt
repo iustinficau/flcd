@@ -1,0 +1,10 @@
+N = S T C E R I
+E = if else then const id = <> :=
+S = S
+P =
+S ::= if C then I T
+T ::= * | else I
+C ::= E R E
+E ::= id | const
+R ::= = | <>
+I ::= id := E

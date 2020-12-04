@@ -7,6 +7,7 @@ Created on Fri Nov 20 12:29:00 2020
 
 from grammar import Grammar
 from parser2 import Parser
+from parserout import ParserOutput
 from parsetable import ParseTable
     
     
@@ -18,13 +19,16 @@ def print_menu():
     print("4. Production for a given nonterminal")
     print("5. First Set ")
     print("6. Follow set")
-
+    print("7. Parse PIF")
+    
     
 if __name__ == '__main__':
 
   
     grammar = Grammar.read_file("g1.txt")
-    parser = Parser(grammar)
+    pif = [0,1]
+    parser = Parser(grammar,pif)
+    parser_output = ParserOutput(parser)
 
     while True:
         print_menu()
@@ -42,7 +46,8 @@ if __name__ == '__main__':
             print(parser.get_first_set())
         elif x == 6:
             print(parser.get_follow_set())
-
+        elif x == 7:
+            parser_output.parse_pif()
         else:
             break
     
